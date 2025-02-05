@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TB Analysis Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .login-container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem 0;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Welcome to T.B.A. (TB Analysis)</h1>
+        <p>Sign in to access your account and start analyzing.</p>
+        <a href="navigation.html" class="btn">Sign In</a>
+        <a href="signup.html" class="btn">Sign Up</a>
+        <div class="footer">
+            <p>&copy; 2025 TB Analysis Platform. <a href="#">Privacy</a> | <a href="#">Terms</a></p>
+        </div>
+    </div>
+</body>
+</html>
