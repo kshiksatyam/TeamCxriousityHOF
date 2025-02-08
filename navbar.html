@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: none;
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        iframe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            border: none;
+        }
+
+        .navbar {
+            width: 100%;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            margin-left: 1rem;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #4facfe;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            height: 100vh;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            padding: 1rem;
+            box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar a {
+            display: block;
+            text-decoration: none;
+            color: white;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #4facfe;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 1rem;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .content h2 {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <iframe src="https://my.spline.design/particles-479e1365af316cef3f9c7201efee3e93/" allowfullscreen></iframe>
+
+    <div class="navbar">
+        <h1>TB Analysis Platform</h1>
+        <div>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h2>Navigation</h2>
+        <a href="upload.html">Upload Image</a>
+        <a href="reports.html">View Reports</a>
+        <a href="history.html">History</a>
+        <a href="settings.html">Settings</a>
+        <a href="logout.html">Logout</a>    
+        <a href="signin.html">Downloads</a>
+        <a href="signin.html">Know Your Area</a>
+    </div>
+
+    <div class="content">
+        <h2>Welcome to the TB Analysis Navigation Page</h2>
+        <p>Use the sidebar to navigate through different features of the platform.</p>
+    </div>
+</body>
+</html>
