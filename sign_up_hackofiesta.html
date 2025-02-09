@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page with Spline Background</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #000;
+            font-family: 'YourFont', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+        .background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            transform: scale(1.25);
+            transform-origin: center;
+            z-index: -1;
+        }
+        .signup-container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.00998);
+            backdrop-filter: blur(20px);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 350px;
+            margin-top: 25vh;
+            margin-bottom: 50px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .signup-container h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .signup-container input, .signup-container select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 16px;
+            backdrop-filter: blur(10px);
+            transition: border-color 0.3s ease-in-out;
+            outline: none;
+        }
+        .signup-container select {
+            background: rgba(255, 255, 255, 0.8);
+            color: #000;
+        }
+        .signup-container input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .signup-container input:invalid {
+            border: 2px solid red;
+        }
+        .signup-container input:valid {
+            border: 2px solid #39ff14;
+        }
+        .signup-container button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .signup-container button:hover {
+            background: #0056b3;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            
+            let email = document.getElementById("email");
+            let username = document.getElementById("username");
+            let password = document.getElementById("password");
+            let confirmPassword = document.getElementById("confirm-password");
+            let age = document.getElementById("age");
+            let country = document.getElementById("country");
+            let passwordError = document.getElementById("password-error");
+            
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email.value)) {
+                alert("Please enter a valid email address.");
+                email.focus();
+                return;
+            }
+            
+            if (username.value.length < 3) {
+                alert("Username must be at least 3 characters long.");
+                username.focus();
+                return;
+            }
+            
+            if (password.value !== confirmPassword.value) {
+                passwordError.style.display = "block";
+                confirmPassword.style.border = "2px solid red";
+                confirmPassword.focus();
+                return;
+            } else {
+                passwordError.style.display = "none";
+                confirmPassword.style.border = "2px solid #39ff14";
+            }
+            
+            if (age.value <= 0) {
+                alert("Age must be a positive number.");
+                age.focus();
+                return;
+            }
+            
+            if (country.value.trim() === "") {
+                alert("Please enter your country.");
+                country.focus();
+                return;
+            }
+            
+            alert("Form submitted successfully!");
+        }
+        
+        function checkPasswordMatch() {
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirm-password");
+            let passwordError = document.getElementById("password-error");
+            
+            if (password !== confirmPassword.value) {
+                passwordError.style.display = "block";
+                confirmPassword.style.border = "2px solid red";
+            } else {
+                passwordError.style.display = "none";
+                confirmPassword.style.border = "2px solid #39ff14";
+            }
+        }
+    </script>
+</head>
+<body>
+    <iframe class="background" src="https://my.spline.design/trails-a92c2e0e7d95af182275bb19fd6958ef/" frameborder="0"></iframe>
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form onsubmit="validateForm(event)">
+            <input type="text" id="fullname" placeholder="Full Name" required>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" id="confirm-password" placeholder="Confirm Password" required onkeyup="checkPasswordMatch()">
+            <div id="password-error" class="error-message">Passwords do not match.</div>
+            <input type="number" id="age" placeholder="Age" required>
+            <select id="gender" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <input type="text" id="country" placeholder="Country" required>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>
