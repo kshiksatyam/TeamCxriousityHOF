@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TB Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .upload-label {
+            position: absolute;
+            top: 48%;
+            left: 46%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+        .hidden-input {
+            display: none;
+        }
+        .result {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+        .instruct{
+            position: absolute;
+            top: 30%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+
+        }
+    </style>
+</head>
+<body>
+    <iframe class="background" src="https://my.spline.design/retrofuturisticcircuitloop-742c41d99b95bfab9956d38918762302/" frameborder="0"></iframe>
+    <div class="instruct" id="instruct">CLICK BELOW TO UPLOAD XRAY IMAGES </div>
+    <label class="upload-label" onclick="document.getElementById('file-input').click()">
+         ⚡
+        <input type="file" id="file-input" class="hidden-input" accept="image/*" onchange="handleFile(event)">
+    </label>
+    
+    <div class="result" id="result"></div>
+
+    <script>
+        let selectedFile = null;
+
+        function handleFile(event) {
+            selectedFile = event.target.files[0];
+            if (selectedFile) {
+                document.getElementById('result').textContent = "Image uploaded. Analyzing...";
+                analyzeImage();
+            }
+        }
+
+        async function analyzeImage() {
+            if (!selectedFile) return;
+            const formData = new FormData();
+            formData.append("image", selectedFile);
+
+            try {
+                const response = await fetch("http://localhost:5000/predict", {
+                    method: "POST",
+                    body: formData
+                });
+                const data = await response.json();
+                document.getElementById('result').textContent = data.result ? `Result: ${data.result}` : "Failed to analyze the image";
+            } catch (error) {
+                console.error("Error uploading image:", error);
+                document.getElementById('result').textContent = "Error analyzing image";
+            }
+        }
+    </script>
+</body>
+</html>
