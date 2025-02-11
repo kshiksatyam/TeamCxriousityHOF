@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TB Doctor Finder</title>
+    <script src="https://maps.app.goo.gl/hRe4EBcyM2AQbioY6"></script>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 400px;
+            background: white;
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .map-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: calc(100% - 400px); /* Adjusting for sidebar width */
+    height: 100vh;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .doctor-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .doctor-card:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .doctor-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .doctor-avatar {
+            width: 50px;
+            height: 50px;
+            background: #e5e7eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .doctor-info h3 {
+            margin: 0;
+            color: #111827;
+            font-size: 16px;
+        }
+
+        .doctor-info p {
+            margin: 5px 0 0;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4b5563;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .available {
+            color: #059669;
+            font-weight: 500;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .filter-button {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .filter-button.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .placeholder-map {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e5e7eb;
+            color: #6b7280;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h1>Find TB Specialists</h1>
+            
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Enter your location">
+                <div class="filters">
+                    <button class="filter-button active">All</button>
+                    <button class="filter-button">Available Now</button>
+                    <button class="filter-button">Nearest</button>
+                </div>
+            </div>
+
+            <div class="doctors-list">
+                <div class="doctor-card" onclick="highlightMarker(1)">
+                    <div class="doctor-header">
+                        <div class="doctor-avatar">
+                            <i data-lucide="user"></i>
+                        </div>
+                        <div class="doctor-info">
+                            <h3>Dr. Ishaan Srivastava</h3>
+                            <p>TB Specialist</p>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <i data-lucide="map-pin"></i>
+                        <span>123 Medical Center, Lucknow</span>
+                    </div>
+                    <div class="detail-row">
+                        <i data-lucide="phone"></i>
+                        <span>(555) 123-4567</span>
+                    </div>
+                    <div class="detail-row">
+                        <i data-lucide="clock"></i>
+                        <span class="available">Available Now • 0.5 km away</span>
+                    </div>
+                </div>
+                <div class="doctors-list">
+                    <div class="doctor-card" onclick="highlightMarker(1)">
+                        <div class="doctor-header">
+                            <div class="doctor-avatar">
+                                <i data-lucide="user"></i>
+                            </div>
+                            <div class="doctor-info">
+                                <h3>Dr. Rakesh Sharma </h3>
+                                <p>TB Specialist AYUSH </p>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <i data-lucide="map-pin"></i>
+                            <span>Northern command Hospital , Lucknow</span>
+                        </div>
+                        <div class="detail-row">
+                            <i data-lucide="phone"></i>
+                            <span>(555) 123-4567</span>
+                        </div>
+                        <div class="detail-row">
+                            <i data-lucide="clock"></i>
+                            <span class="available">Available Now • 2.3 km away</span>
+                        </div>
+                    </div>
+    
+
+                <div class="doctor-card" onclick="highlightMarker(2)">
+                    <div class="doctor-header">
+                        <div class="doctor-avatar">
+                            <i data-lucide="user"></i>
+                        </div>
+                        <div class="doctor-info">
+                            <h3>Dr. Salauddin Khan</h3>
+                            <p>Pulmonologist, TB Specialist</p>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <i data-lucide="map-pin"></i>
+                        <span>456 Aminaganj , Lucknow </span>
+                    </div>
+                    <div class="detail-row">
+                        <i data-lucide="phone"></i>
+                        <span>(555) 987-6543</span>
+                    </div>
+                    <div class="detail-row">
+                        <i data-lucide="clock"></i>
+                        <span>Next available in 30 mins • 1.2 km away</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <div class="placeholder-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d113938.21103815443!2d80.89279707743317!3d26.82184589836737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1schest%20doctors%20near%20me%20!5e0!3m2!1sen!2sin!4v1739179426023!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Simulated marker highlight function
+        function highlightMarker(doctorId) {
+            console.log(`Highlighting marker for doctor ${doctorId}`);
+        }
+
+        // In a real implementation, you would:
+        // 1. Initialize a map (Google Maps, Mapbox, etc.)
+        // 2. Add markers for each doctor
+        // 3. Handle click events to show info windows
+        // 4. Implement real-time location updates
+        // 5. Add routing capabilities
+    </script>
+</body>
+</html>
