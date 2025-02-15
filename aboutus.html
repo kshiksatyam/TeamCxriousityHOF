@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - AI Tuberculosis Detection</title>
+    <style>
+        /* General Styles */
+        body {
+            background-color: #101010;
+            color: #e0e0e0;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* Headings */
+        h1, h2, h3 {
+            color: #00c896;
+            text-shadow: 2px 2px 4px rgba(0, 200, 150, 0.5);
+        }
+
+        /* Section Styling */
+        .section {
+            background-color: #1a1a1a;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0px 4px 10px rgba(0, 255, 150, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .section:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 6px 15px rgba(0, 255, 150, 0.3);
+        }
+
+        /* Buttons */
+        .button {
+            background-color: #00c896;
+            color: #ffffff;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            border-radius: 6px;
+            font-size: 17px;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .button:hover {
+            background-color: #008f6a;
+            transform: scale(1.05);
+        }
+
+        /* Steps Section */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .step {
+            background: rgba(255, 0, 0, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s;
+        }
+        .step:hover {
+            transform: translateX(10px);
+        }
+        .step img {
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Find Us Section */
+        .find-us {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 200, 150, 0.1);
+            border-radius: 10px;
+            box-shadow: 0px 3px 10px rgba(0, 255, 150, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About Us</h1>
+        <p>We are a dedicated team working on an *AI-powered solution* to detect tuberculosis (TB) using *X-ray scans*.  
+        Our government-backed project is designed to provide *fast, accurate, and accessible diagnostics*.</p>
+
+        <!-- About the Project Section -->
+        <div class="section">
+            <h2>About the Project</h2>
+            <p>Implementing *AI-based applications* for tuberculosis (TB) patients can *revolutionize diagnosis, treatment, and monitoring*.  
+            AI can analyze *chest X-rays* with high accuracy, detect abnormalities, and help healthcare providers identify high-risk individuals.</p>
+            <p>In *resource-limited settings, AI-powered tools **bridge the gap* by providing a *cost-effective, scalable solution*.  
+            With *real-time analysis, AI can **assist healthcare workers* and *enhance public health strategies*, improving TB patient care worldwide.</p>
+        </div>
+
+        <!-- How It Works Section -->
+        <div class="section">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <img src="https://cdn-icons-png.flaticon.com/512/281/281760.png" alt="Upload Icon">
+                    <p><strong>1. Upload Your X-ray:</strong> Click the button below to securely upload your chest X-ray image.</p>
+                </div>
+                <div class="step">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1067/1067412.png" alt="AI Icon">
+                    <p><strong>2. AI Analysis:</strong> Our AI model scans the image, detects TB-related patterns, and generates a *detailed report*.</p>
+                </div>
+                <div class="step">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3279/3279875.png" alt="Report Icon">
+                    <p><strong>3. Receive Results:</strong> Get *instant feedback* on TB detection, along with *medical recommendations*.</p>
+                </div>
+            </div>
+            <button class="button" onclick="dummyUpload()">Try Now!</button>
+        </div>
+
+        <!-- Find Us Section -->
+        <div class="section find-us">
+            <h2>Find Us</h2>
+            <p>More information coming soon...</p>
+        </div>
+    </div>
+
+    <script>
+        function dummyUpload() {
+            alert('Upload feature coming soon!');
+        }
+    </script>
+</body>
+</html>

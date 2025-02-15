@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TB Analysis - View Reports</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --neon-green: #00FF88;
+            --dark-1: #0A0A0A;
+            --dark-2: #1A1A1A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: var(--dark-1);
+            color: white;
+        }
+
+        /* Navigation */
+        .sidebar {
+            width: 280px;
+            height: 100vh;
+            position: fixed;
+            background: var(--dark-2);
+            padding: 2rem;
+            border-right: 1px solid #333;
+        }
+
+        .brand {
+            font-size: 1.8rem;
+            color: var(--neon-green);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .nav-item {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-item.active {
+            background: #333;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding: 3rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .user-id {
+            color: var(--neon-green);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Reports Grid */
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .report-card {
+            background: var(--dark-2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #333;
+        }
+
+        .report-thumbnail {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .report-status {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .positive { background: rgba(255, 50, 50, 0.15); color: #FF3232; }
+        .negative { background: rgba(0, 255, 136, 0.15); color: var(--neon-green); }
+
+        .actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .action-btn {
+            background: none;
+            border: 1px solid #333;
+            color: var(--neon-green);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .action-btn:hover {
+            border-color: var(--neon-green);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- <iframe src="https://my.spline.design/particlesflow-9223b90a5c9c0f82527544ac22a7ede7/" allowfullscreen></iframe> -->
+     
+
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar">
+        <div class="brand">PATHOPREDICT</div>
+        
+        <div class="nav-item active">
+            <i class="fas fa-file-alt"></i>
+            View Reports
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-upload"></i>
+            Upload Image
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-cog"></i>
+            Settings
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-download"></i>
+            Downloads
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+        </div>
+        
+        <!-- Footer Section -->
+        <div class="footer" style="position: absolute; bottom: 2rem; width: calc(100% - 4rem);">
+            <div class="user-id">ID: 4.0GMA1-2.0A7B9C6F1D0B1</div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="header">
+            <h1>Diagnostic Reports</h1>
+            <input type="text" placeholder="Search reports..." style="
+                background: var(--dark-1);
+                border: 1px solid #333;
+                padding: 0.8rem;
+                border-radius: 8px;
+                color: white;
+                width: 300px;
+            ">
+        </div>
+
+        <!-- Reports Grid -->
+        <div class="reports-grid">
+            <!-- Report Card 1 -->
+            <div class="report-card">
+                <img src="\WhatsApp Image 2025-02-15 at 22.32.53_a93ad958.jpg" class="report-thumbnail" alt="X-Ray">
+                <div class="report-meta">
+                    <span class="report-status positive">TB Detected</span>
+                    <span style="float: right; color: #666">85% Confidence</span>
+                </div>
+                <div style="margin: 1rem 0; color: #888">2023-11-15 14:32</div>
+                <div class="actions">
+                    <button class="action-btn">
+                        <i class="fas fa-download"></i>
+                        Download
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-share"></i>
+                        Share
+                    </button>
+                </div>
+            </div>
+
+            <!-- Report Card 2 -->
+            <div class="report-card">
+                <img src="\WhatsApp Image 2025-02-15 at 22.32.53_a93ad958.jpg" class="report-thumbnail" alt="X-Ray">
+                <div class="report-meta">
+                    <span class="report-status negative">No TB Detected</span>
+                    <span style="float: right; color: #666">92% Confidence</span>
+                </div>
+                <div style="margin: 1rem 0; color: #888">2023-11-14 09:15</div>
+                <div class="actions">
+                    <button class="action-btn">
+                        <i class="fas fa-download"></i>
+                        Download
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-share"></i>
+                        Share
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- <script>
+        // Add navigation interactivity
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelector('.nav-item.active').classList.remove('active');
+                this.classList.add('active');
+            });
+        });
+    </script> -->
+    <script>
+        // Mock Data Storage
+        let reports = [
+            {
+                id: 'RPT-001',
+                date: '2023-11-15 14:32',
+                thumbnail: 'xray-thumb.jpg',
+                status: 'positive',
+                confidence: 85,
+                image: 'full-xray.jpg',
+                report: 'tb-positive-report.pdf'
+            },
+            {
+                id: 'RPT-002',
+                date: '2023-11-14 09:15',
+                thumbnail: 'xray-thumb-2.jpg',
+                status: 'negative',
+                confidence: 92,
+                image: 'full-xray-2.jpg',
+                report: 'tb-negative-report.pdf'
+            }
+        ];
+        
+        // DOM Elements
+        const reportsGrid = document.querySelector('.reports-grid');
+        const searchInput = document.querySelector('input[type="text"]');
+        const sortSelect = document.createElement('select');
+        
+        // Initialize Page
+        document.addEventListener('DOMContentLoaded', () => {
+            createSortDropdown();
+            renderReports(reports);
+            setupEventListeners();
+        });
+        
+        // Create Sorting Dropdown
+        function createSortDropdown() {
+            const header = document.querySelector('.header');
+            sortSelect.innerHTML = `
+                <option value="date-desc">Newest First</option>
+                <option value="date-asc">Oldest First</option>
+                <option value="confidence-desc">High Confidence</option>
+                <option value="confidence-asc">Low Confidence</option>
+            `;
+            sortSelect.style.cssText = `
+                background: var(--dark-1);
+                border: 1px solid #333;
+                padding: 0.8rem;
+                border-radius: 8px;
+                color: white;
+                margin-left: 1rem;
+            `;
+            header.appendChild(sortSelect);
+        }
+        
+        // Render Reports
+        function renderReports(data) {
+            reportsGrid.innerHTML = data.map(report => `
+                <div class="report-card" data-id="${report.id}">
+                    <img src="${report.thumbnail}" class="report-thumbnail" alt="X-Ray">
+                    <div class="report-meta">
+                        <span class="report-status ${report.status}">
+                            ${report.status === 'positive' ? 'TB Detected' : 'No TB Detected'}
+                        </span>
+                        <span class="confidence">${report.confidence}% Confidence</span>
+                    </div>
+                    <div class="report-date">${report.date}</div>
+                    <div class="actions">
+                        <button class="action-btn download-btn">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                        <button class="action-btn share-btn">
+                            <i class="fas fa-share"></i> Share
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Event Listeners
+        function setupEventListeners() {
+            // Search Functionality
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                const filtered = reports.filter(report => 
+                    report.id.toLowerCase().includes(term) ||
+                    report.status.includes(term) ||
+                    report.date.includes(term)
+                );
+                renderReports(filtered);
+            });
+        
+            // Sort Functionality
+            sortSelect.addEventListener('change', (e) => {
+                const value = e.target.value;
+                let sorted = [...reports];
+                
+                switch(value) {
+                    case 'date-desc':
+                        sorted.sort((a,b) => new Date(b.date) - new Date(a.date));
+                        break;
+                    case 'date-asc':
+                        sorted.sort((a,b) => new Date(a.date) - new Date(b.date));
+                        break;
+                    case 'confidence-desc':
+                        sorted.sort((a,b) => b.confidence - a.confidence);
+                        break;
+                    case 'confidence-asc':
+                        sorted.sort((a,b) => a.confidence - b.confidence);
+                        break;
+                }
+                
+                renderReports(sorted);
+            });
+        
+            // Download/Share Buttons
+            reportsGrid.addEventListener('click', (e) => {
+                const card = e.target.closest('.report-card');
+                const report = reports.find(r => r.id === card.dataset.id);
+                
+                if(e.target.closest('.download-btn')) {
+                    downloadReport(report);
+                }
+                
+                if(e.target.closest('.share-btn')) {
+                    shareReport(report);
+                }
+            });
+        }
+        
+        // Download Handler
+        function downloadReport(report) {
+            // Simulate download
+            const link = document.createElement('a');
+            link.href = report.report;
+            link.download = TB_Report_${report.id}.pdf;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // Share Handler
+        async function shareReport(report) {
+            try {
+                await navigator.share({
+                    title: TB Diagnostic Report - ${report.id},
+                    text: TB Detection Result: ${report.status.toUpperCase()}\nConfidence: ${report.confidence}%,
+                    url: window.location.href
+                });
+            } catch (err) {
+                console.log('Sharing failed:', err);
+                //alert('Sharing not supported - here's the report URL:\n' + window.location.href);
+            }
+        }
+        
+        // Simulate API Call (Add more reports)
+        function loadMoreReports() {
+            // In real app: fetch('/api/reports?page=2')
+            const newReports = [...Array(2)].map((_,i) => ({
+                id: RPT-00${reports.length + i + 1},
+                date: new Date().toISOString(),
+                thumbnail: xray-thumb-${reports.length + i + 1}.jpg,
+                status: Math.random() > 0.5 ? 'positive' : 'negative',
+                confidence: Math.floor(Math.random() * 50 + 50),
+                image: full-xray-${reports.length + i + 1}.jpg,
+                report: report-${reports.length + i + 1}.pdf
+            }));
+            
+            reports = [...reports, ...newReports];
+            renderReports(reports);
+        }
+        
+        // Add Load More Button
+        const loadMoreBtn = document.createElement('button');
+        loadMoreBtn.textContent = 'Load More Reports';
+        loadMoreBtn.style.cssText = `
+            display: block;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            background: var(--neon-green);
+            color: var(--dark-1);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        `;
+        loadMoreBtn.addEventListener('click', loadMoreReports);
+        document.querySelector('.main-content').appendChild(loadMoreBtn);
+        </script>
+        
+        <!-- Add this CSS -->
+        <style>
+        /* Add these styles to existing CSS */
+        .report-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .confidence {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .report-date {
+            color: #888;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Loading State */
+        .loading {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                transparent 25%,
+                rgba(255,255,255,0.1) 50%,
+                transparent 75%
+            );
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(100%); }
+        }
+        </style>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TB Analysis - Downloads</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --neon-green: #00FF88;
+            --dark-1: #0A0A0A;
+            --dark-2: #1A1A1A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: var(--dark-1);
+            color: white;
+        }
+
+        /* Navigation */
+        .sidebar {
+            width: 280px;
+            height: 100vh;
+            position: fixed;
+            background: var(--dark-2);
+            padding: 2rem;
+            border-right: 1px solid #333;
+        }
+
+        .brand {
+            font-size: 1.8rem;
+            color: var(--neon-green);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .nav-item {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-item.active {
+            background: #333;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding: 3rem;
+        }
+
+        .downloads-section {
+            background: var(--dark-2);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid #333;
+            text-align: center;
+        }
+
+        .download-btn {
+            background: var(--neon-green);
+            color: var(--dark-1);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .download-btn:hover {
+            background: #00cc6e;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar">
+        <div class="brand">PATHOPREDICT</div>
+        
+        <div class="nav-item">
+            <i class="fas fa-file-alt"></i>
+            View Reports
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-upload"></i>
+            Upload Image
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-cog"></i>
+            Settings
+        </div>
+        <div class="nav-item active">
+            <i class="fas fa-download"></i>
+            Downloads
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+        </div>
+        
+        <!-- Footer Section -->
+        <div class="footer" style="position: absolute; bottom: 2rem; width: calc(100% - 4rem);">
+            <div class="user-id">ID: 4.0GMA1-2.0A7B9C6F1D0B1</div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="downloads-section">
+            <h1>Downloads</h1>
+            <p>Click the button below to download the latest TB analysis report:</p>
+            <a class="download-btn" href="/Pathopredict1215.pdf" download>
+                <i class="fas fa-file-pdf"></i> Download Report
+            </a>
+            
+        </div>
+    </main>
+</body>
+</html>
