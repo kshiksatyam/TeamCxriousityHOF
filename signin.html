@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - TB Analysis Platform</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -34,18 +32,34 @@
             font-size: 1.8rem;
         }
 
+        .form-input {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
         .btn {
             display: inline-block;
             background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: white;
             padding: 0.8rem 1.5rem;
-            margin: 0.5rem 0;
+            margin: 1rem 0;
             border: none;
             border-radius: 0.5rem;
             font-size: 1rem;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s ease-in-out;
+            width: 100%;
         }
 
         .btn:hover {
@@ -67,17 +81,57 @@
         .footer a:hover {
             text-decoration: underline;
         }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h1>Welcome to T.B.A. (TB Analysis)</h1>
-        <p>Sign in to access your account and start analyzing.</p>
-        <a href="navigation.html" class="btn">Sign In</a>
-        <a href="signup.html" class="btn">Sign Up</a>
+        <p>Sign in to access your account and view reports.</p>
+        
+        <!-- Login Form -->
+        <form id="loginForm">
+            <input type="email" id="email" class="form-input" placeholder="Email" required>
+            <input type="password" id="password" class="form-input" placeholder="Password" required>
+            <div class="error-message" id="errorMessage">Invalid email or password.</div>
+            <button type="submit" class="btn">Sign In</button>
+        </form>
+        
         <div class="footer">
             <p>&copy; 2025 TB Analysis Platform. <a href="#">Privacy</a> | <a href="#">Terms</a></p>
         </div>
     </div>
+
+    <script>
+        // Fake user credentials for demo
+        const validCredentials = {
+            email: "user@example.com",
+            password: "password123"
+        };
+
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Fake authentication logic
+            if (email === validCredentials.email && password === validCredentials.password) {
+                // Redirect to reports page
+                window.location.href = 'reports.html';
+            } else {
+                // Show error message
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>
